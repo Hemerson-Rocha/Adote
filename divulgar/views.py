@@ -30,6 +30,7 @@ def novo_pet(request):
 
         # validar dados
         # api correios
+        # messages error
 
         pet = Pet(
             usuario=request.user,
@@ -59,3 +60,14 @@ def novo_pet(request):
 
         messages.add_message(request, constants.SUCCESS, 'Novo pet cadastrado')
         return render(request, 'novo_pet.html', context)
+
+@login_required
+def seus_pets(request):
+    if request.method == "GET":
+        pets = Pet.objects.filter(usuario=request.user)
+
+        context = {
+            'pets' : pets
+        }
+
+        return render(request, 'seus_pets.html', context)
