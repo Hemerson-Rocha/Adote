@@ -64,6 +64,7 @@ def processa_pedido_adocao(request, id_pedido):
 
     pedido.save()
 
+    # alterar status do pet
     
     print(pedido.usuario.email)
     email = send_mail(

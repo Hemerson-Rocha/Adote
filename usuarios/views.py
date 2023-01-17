@@ -6,6 +6,8 @@ from django.contrib.messages import constants
 from django.contrib.auth import authenticate, login, logout
 
 
+def index(request):
+    return render(request, 'index.html')
 
 def cadastro(request):
     if request.user.is_authenticated:
